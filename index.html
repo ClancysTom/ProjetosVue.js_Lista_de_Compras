@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Lista de Compras</title>
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <h1>Lista de Compras</h1>
+            <input type="text" v-model="newItem" @keyup.enter="addItem" placeholder="Adicione um item">
+            <ul>
+                <li v-for="(item, index) in items" :key="index" :class="{ bought: item.bought }">
+                    {{ item.name }}
+                    <button @click="toggleItem(index)">{{ item.bought ? "Desmarcar" : "Marcar" }}</button>
+                    <button @click="removeItem(index)">Remover</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
